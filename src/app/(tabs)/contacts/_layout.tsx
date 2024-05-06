@@ -12,14 +12,14 @@ export default function HomeLayout() {
                 headerTitle: props => <Text></Text>,
                 headerShown: true,
                 headerRight: () => (
-                    <TouchableOpacity onPress={()=> router.push('/contacts/contactForm')} className={'mr-4'}>
+                    <TouchableOpacity onPress={()=> router.push('/contacts/contactFormScreen')} className={'mr-4'}>
                         <FontAwesome name="user-plus" size={24} color="black" />
                     </TouchableOpacity>
                 ),
             }}
         />
         <Stack.Screen
-            name={'contact'}
+            name={'contactDetailsScreen'}
             options={{
                 headerBackTitleVisible: false,
                 headerStyle: { backgroundColor: 'white' },
@@ -27,7 +27,7 @@ export default function HomeLayout() {
             }}
         />
         <Stack.Screen
-            name={'contactForm'}
+            name={'contactFormScreen'}
             options={{
                 headerBackTitleVisible: false,
                 headerStyle: { backgroundColor: 'white' },

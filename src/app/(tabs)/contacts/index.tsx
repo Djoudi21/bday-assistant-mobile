@@ -22,7 +22,7 @@ export default function ContactsTab() {
                 contentContainerStyle={{padding: 4}}
                 data={DATA}
                 renderItem={({ item }) => <TouchableOpacity onPress={() => {
-                    router.push('/contacts/contact')
+                    router.push('/contacts/contactDetailsScreen')
                 }}>
                     <ListItem birthday={item.birthday} name={item.name} />
                 </TouchableOpacity>}
