@@ -1,5 +1,5 @@
 import {SafeAreaView, Text, View, Button} from "react-native";
-import { ClerkProvider, SignedIn, SignedOut,useAuth } from "@clerk/clerk-expo";
+import { SignedIn, SignedOut,useAuth } from "@clerk/clerk-expo";
 import {router} from "expo-router";
 
 export default function Settings() {
