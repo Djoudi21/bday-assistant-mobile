@@ -1,10 +1,10 @@
-import {SafeAreaView, Text, TouchableOpacity} from "react-native";
+import {SafeAreaView, TouchableOpacity} from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import ListItem from "@/components/ListItem";
-import {router, Stack} from "expo-router";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useRouter} from "expo-router";
 
 export default function ContactsTab() {
+    const router= useRouter();
     const DATA = [
         {
             name: "name",
@@ -18,18 +18,6 @@ export default function ContactsTab() {
 
     return (
         <SafeAreaView className={'flex-1'} style={{flex: 1}}>
-            <Stack.Screen
-                options={{
-                    headerStyle: { backgroundColor: 'white' },
-                    headerTitle: props => <Text></Text>,
-                    headerShown: true,
-                    headerRight: () => (
-                        <TouchableOpacity className={'mr-4'}>
-                            <FontAwesome name="user-plus" size={24} color="black" />
-                        </TouchableOpacity>
-                    ),
-                }}
-            />
             <FlashList
                 contentContainerStyle={{padding: 4}}
                 data={DATA}
