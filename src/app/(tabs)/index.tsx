@@ -1,7 +1,7 @@
 import {SafeAreaView, Text} from "react-native";
 
-export default function Index() {
+export default function CalendarTab() {
     return (
-        <SafeAreaView><Text>Home</Text></SafeAreaView>
+        <SafeAreaView><Text>Calendar</Text></SafeAreaView>
     )
 }
