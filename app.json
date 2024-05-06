@@ -16,6 +16,17 @@
       ]
     ],
     "name": "bday-assistant-mobile",
-    "slug": "bday-assistant-mobile"
+    "slug": "bday-assistant-mobile",
+    "extra": {
+      "router": {
+        "origin": "https://n"
+      },
+      "eas": {
+        "projectId": "e3deb0c7-8ef2-43dc-bd42-6b5f7a14e22f"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.djoudi21.bdayassistantmobile"
+    }
   }
 }
