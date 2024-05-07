@@ -1,6 +1,7 @@
 import {Stack, useRouter} from "expo-router";
 import {Text, TouchableOpacity} from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import {COLORS} from "@/utils/colors";
 
 export default function HomeLayout() {
     const router = useRouter();
@@ -13,7 +14,7 @@ export default function HomeLayout() {
                 headerShown: true,
                 headerRight: () => (
                     <TouchableOpacity onPress={()=> router.push('/contacts/contactFormScreen')} className={'mr-4'}>
-                        <FontAwesome name="user-plus" size={24} color="black" />
+                        <FontAwesome name="user-plus" size={24} color={COLORS.primary} />
                     </TouchableOpacity>
                 ),
             }}
@@ -31,7 +32,7 @@ export default function HomeLayout() {
             options={{
                 headerBackTitleVisible: false,
                 headerStyle: { backgroundColor: 'white' },
-                headerTitle: props => <Text>Ajouter un contact</Text>,
+                headerTitle: props => <Text className={`font-semibold font-lg text-[${COLORS.primary}]`}>Ajouter un contact</Text>,
                 headerShown: true,
             }}
         />

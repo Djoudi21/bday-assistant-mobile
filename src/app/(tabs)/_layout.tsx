@@ -1,6 +1,7 @@
 import {Tabs} from "expo-router";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import {View} from "react-native";
+import {COLORS} from "@/utils/colors";
 
 export default function TabsLayout() {
 
@@ -11,7 +12,7 @@ export default function TabsLayout() {
             <Tabs.Screen
                 name="contacts"
                 options={{
-                    tabBarActiveTintColor: '#512da8',
+                    tabBarActiveTintColor: COLORS.primary,
                     headerShown: false,
                     tabBarLabel: "",
                     tabBarIcon: ({ color }) => <View className={'pt-2'}>
@@ -22,7 +23,7 @@ export default function TabsLayout() {
             <Tabs.Screen
                 name="index"
                 options={{
-                    tabBarActiveTintColor: '#512da8',
+                    tabBarActiveTintColor: COLORS.primary,
                     tabBarLabel: "",
                     tabBarIcon: ({ color }) =>
                         <View className={'pt-2'}>
@@ -33,7 +34,7 @@ export default function TabsLayout() {
             <Tabs.Screen
                 name="settings"
                 options={{
-                    tabBarActiveTintColor: '#512da8',
+                    tabBarActiveTintColor: COLORS.primary,
                     tabBarLabel: "",
                     tabBarIcon: ({ color }) =>
                         <View className={'pt-2'}>
