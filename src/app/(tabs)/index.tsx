@@ -16,9 +16,9 @@ export default function CalendarTab() {
                     setSelected(day.dateString);
                 }}
                 markedDates={{
-                    '2024-05-01': {selected: true, marked: true, selectedColor: 'blue'},
+                    '2024-05-01': {selected: true, marked: true, selectedColor: '#512da8'},
                     '2024-05-02': {marked: true},
-                    '2024-05-03': {selected: true, marked: true, selectedColor: 'blue'}
+                    '2024-05-03': {selected: true, marked: true, selectedColor: '#512da8'}
                 }}
             />
         </SafeAreaView>
