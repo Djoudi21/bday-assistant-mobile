@@ -9,7 +9,7 @@ type FormData = {
     description: string
 }
 
-export default function ContactForm() {
+export default function ContactForm({onSubmit}) {
 
     const {
         control,
@@ -22,8 +22,6 @@ export default function ContactForm() {
             description: ''
         },
     })
-
-    const onSubmit = (data) => console.log(data.birthday)
 
     return  (
         <View className={'m-4 flex flex-col gap-4'}>
