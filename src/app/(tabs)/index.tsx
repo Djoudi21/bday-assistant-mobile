@@ -7,6 +7,7 @@ import {FetchContactsGateway} from "@/gateways/fetchContacts.gateway";
 import {ListContactsUseCase} from "@/use-cases/contacts/listContacts";
 import {useUser} from "@clerk/clerk-expo";
 import {useMarkedDates} from "@/utils/useMarkedDates";
+import {COLORS} from "@/utils/colors";
 
 export default function CalendarTab() {
     const [selected, setSelected] = useState('');
@@ -41,7 +42,10 @@ export default function CalendarTab() {
                 onDayPress={day => {
                     setSelected(day.dateString);
                 }}
-                markedDates={{...birthdaysData}}
+                markedDates={{
+                    ...birthdaysData,
+                    [selected]: {selected: true, selectedColor: COLORS.secondary}
+                }}
             />
         </SafeAreaView>
     )
