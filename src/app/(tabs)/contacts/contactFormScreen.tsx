@@ -8,6 +8,7 @@ import {ActivityIndicator} from "react-native-paper";
 import {COLORS} from "@/utils/colors";
 import {CreateContactUseCase} from "@/use-cases/createContactUseCase";
 import {useRouter} from "expo-router";
+import {format} from "date-fns";
 
 export default function ContactFormScreen() {
     const router = useRouter();
@@ -16,7 +17,12 @@ export default function ContactFormScreen() {
     const createContact = async (contact: NewContact): Promise<CreateContactResponse['data']['contact']> => {
         const contactsGateway = new FetchContactsGateway()
         const createContactUseCase = new CreateContactUseCase(contactsGateway);
-        const newContact: NewContact = { ...contact }
+        const newContact: NewContact = {
+            name: contact.name,
+            description: contact.description,
+            birthday: contact.birthday,
+        }
+        console.log(newContact)
         const res = await createContactUseCase.execute(newContact)
         const createdContact = res.data.contact
         return new Promise(resolve => resolve(createdContact))
@@ -25,7 +31,7 @@ export default function ContactFormScreen() {
     // Mutations
     const addMutation = useMutation({
         mutationFn: (data: NewContact) => createContact(data),
-        onSuccess: (data, variables, context) => {
+        onSuccess: () => {
             router.navigate('/contacts')
         },
         onSettled: async () => {

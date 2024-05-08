@@ -8,6 +8,7 @@ import {COLORS} from "@/utils/colors";
 import {Contact, ListContactsResponse, NewContact} from "@/types";
 import {ListContactsUseCase} from "@/use-cases/listContacts";
 import {FetchContactsGateway} from "@/gateways/fetchContacts.gateway";
+import {format} from "date-fns";
 
 export default function ContactsTab() {
     const router= useRouter();
@@ -44,7 +45,7 @@ export default function ContactsTab() {
                 renderItem={({ item }) => <TouchableOpacity className={'mb-4'} onPress={() => {
                     router.push('/contacts/contactDetailsScreen')
                 }}>
-                    <ContactListItem birthday={item.birthday} name={item.name} />
+                    <ContactListItem birthday={format(item.birthday, 'MM-dd-yy')} name={item.name} />
                 </TouchableOpacity>}
                 estimatedItemSize={1}
             />

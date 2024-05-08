@@ -1,13 +1,13 @@
 export interface Contact {
     name: string
-    birthday: string
+    birthday: Date
     description: string
     id: number
 }
 
 export interface NewContact {
     name: string
-    birthday: string
+    birthday: Date
     description: string
 }
 
