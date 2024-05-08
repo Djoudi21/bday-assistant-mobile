@@ -11,11 +11,7 @@ import {
 } from '@tanstack/react-query'
 
 export default function RootLayout() {
-    useEffect(() => {
-        router.replace('/(tabs)');
-    })
     const queryClient = new QueryClient()
-
   return (
       <QueryClientProvider client={queryClient}>
           <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}>

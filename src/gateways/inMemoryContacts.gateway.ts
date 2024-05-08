@@ -3,8 +3,8 @@ import {Contact, CreateContactResponse, ListContactsResponse} from "@/types";
 
 export class InMemoryContactsGateway implements ContactsGateway {
     public contacts: Contact[] = [
-        {name: 'ABDEqsdqsdLqe', birthday: 'bday', id: 1, description: 'zaer'},
-        {name: 'sdf', birthday: 'bday', id: 2, description: 'zaer'},
+        {name: 'ABDEqsdqsdLqe', birthday: new Date(), id: 1, description: 'zaer'},
+        {name: 'sdf', birthday: new Date(), id: 2, description: 'zaer'},
     ];
 
     listContacts(): Promise<ListContactsResponse> {

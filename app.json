@@ -28,6 +28,9 @@
     },
     "ios": {
       "bundleIdentifier": "com.djoudi21.bdayassistantmobile"
+    },
+    "android": {
+      "package": "com.djoudi21.bdayassistantmobile"
     }
   }
 }

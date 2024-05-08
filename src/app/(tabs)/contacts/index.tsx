@@ -6,15 +6,17 @@ import {useMutationState, useQuery,} from '@tanstack/react-query'
 import {ActivityIndicator} from "react-native-paper";
 import {COLORS} from "@/utils/colors";
 import {Contact, ListContactsResponse, NewContact} from "@/types";
-import {ListContactsUseCase} from "@/use-cases/listContacts";
+import {ListContactsUseCase} from "@/use-cases/contacts/listContacts";
 import {FetchContactsGateway} from "@/gateways/fetchContacts.gateway";
 import {format} from "date-fns";
+import {useUser} from "@clerk/clerk-expo";
 
 export default function ContactsTab() {
     const router= useRouter();
+    const {user} = useUser()
 
     const fetchContactsList = async (): Promise<ListContactsResponse['data']['contacts']> => {
-        const contactsGateway = new FetchContactsGateway()
+        const contactsGateway = new FetchContactsGateway(user.id)
         const listContactsUseCase = new ListContactsUseCase(contactsGateway);
         const res = await listContactsUseCase.execute()
         const contacts = res.data.contacts

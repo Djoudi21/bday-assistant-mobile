@@ -6,23 +6,25 @@ import {FetchContactsGateway} from "@/gateways/fetchContacts.gateway";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {ActivityIndicator} from "react-native-paper";
 import {COLORS} from "@/utils/colors";
-import {CreateContactUseCase} from "@/use-cases/createContactUseCase";
+import {CreateContactUseCase} from "@/use-cases/contacts/createContactUseCase";
 import {useRouter} from "expo-router";
 import {format} from "date-fns";
+import {useUser} from "@clerk/clerk-expo";
 
 export default function ContactFormScreen() {
     const router = useRouter();
     const queryClient = useQueryClient()
+    const {user} = useUser()
 
     const createContact = async (contact: NewContact): Promise<CreateContactResponse['data']['contact']> => {
-        const contactsGateway = new FetchContactsGateway()
+        const contactsGateway = new FetchContactsGateway(user.id)
         const createContactUseCase = new CreateContactUseCase(contactsGateway);
         const newContact: NewContact = {
             name: contact.name,
             description: contact.description,
             birthday: contact.birthday,
         }
-        console.log(newContact)
+
         const res = await createContactUseCase.execute(newContact)
         const createdContact = res.data.contact
         return new Promise(resolve => resolve(createdContact))
