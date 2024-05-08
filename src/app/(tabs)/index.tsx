@@ -1,10 +1,35 @@
-import {SafeAreaView, Text} from "react-native";
+import {SafeAreaView} from "react-native";
 import {Calendar} from "react-native-calendars";
 import {useState} from "react";
-import {COLORS} from "@/utils/colors";
+import {useQuery} from "@tanstack/react-query";
+import {Contact, ListContactsResponse} from "@/types";
+import {FetchContactsGateway} from "@/gateways/fetchContacts.gateway";
+import {ListContactsUseCase} from "@/use-cases/contacts/listContacts";
+import {useUser} from "@clerk/clerk-expo";
+import {useMarkedDates} from "@/utils/useMarkedDates";
 
 export default function CalendarTab() {
     const [selected, setSelected] = useState('');
+    const {user} = useUser()
+    const {transformBirthdaysData} = useMarkedDates()
+    const fetchContactsList = async (): Promise<ListContactsResponse['data']['contacts']> => {
+        const contactsGateway = new FetchContactsGateway(user.id)
+        const listContactsUseCase = new ListContactsUseCase(contactsGateway);
+        const res = await listContactsUseCase.execute()
+        const contacts = res.data.contacts
+        return new Promise(resolve => resolve(contacts))
+    }
+
+    // Queries
+    const { data } = useQuery<Contact[]>({
+        queryKey: ['contacts'],
+        queryFn: async () => {
+            return await fetchContactsList()
+        },
+    })
+
+    const birthdaysData = transformBirthdaysData(data);
+
 
     return (
         <SafeAreaView className={'flex justify-around h-screen overflow-y-scroll'}>
@@ -16,11 +41,7 @@ export default function CalendarTab() {
                 onDayPress={day => {
                     setSelected(day.dateString);
                 }}
-                markedDates={{
-                    '2024-05-01': {selected: true, marked: true, selectedColor: COLORS.primary},
-                    '2024-05-02': {marked: true},
-                    '2024-05-03': {selected: true, marked: true, selectedColor: COLORS.primary}
-                }}
+                markedDates={{...birthdaysData}}
             />
         </SafeAreaView>
     )

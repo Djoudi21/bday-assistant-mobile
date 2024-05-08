@@ -2,7 +2,7 @@ import {SafeAreaView, TouchableOpacity} from "react-native";
 import {FlashList} from "@shopify/flash-list";
 import ContactListItem from "@/components/ContactListItem";
 import {useRouter} from "expo-router";
-import {useMutationState, useQuery,} from '@tanstack/react-query'
+import {useQuery,} from '@tanstack/react-query'
 import {ActivityIndicator} from "react-native-paper";
 import {COLORS} from "@/utils/colors";
 import {Contact, ListContactsResponse, NewContact} from "@/types";
@@ -47,7 +47,7 @@ export default function ContactsTab() {
                 renderItem={({ item }) => <TouchableOpacity className={'mb-4'} onPress={() => {
                     router.push('/contacts/contactDetailsScreen')
                 }}>
-                    <ContactListItem birthday={format(item.birthday, 'MM-dd-yy')} name={item.name} />
+                    <ContactListItem birthday={item.birthday?.toString()} name={item.name} />
                 </TouchableOpacity>}
                 estimatedItemSize={1}
             />
