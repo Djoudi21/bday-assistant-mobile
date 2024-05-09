@@ -16,7 +16,6 @@ export default function RootLayout() {
     console.log('DATA', data)
   return (
       <QueryClientProvider client={queryClient}>
-          <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}>
                   <PaperProvider>
                           <Stack
                               screenOptions={{
@@ -26,7 +25,6 @@ export default function RootLayout() {
                             <Stack.Screen name="register" options={{headerShown: true}} />
                           </Stack>
                   </PaperProvider>
-          </ClerkProvider>
           <DevToolsBubble />
       </QueryClientProvider>
   )
