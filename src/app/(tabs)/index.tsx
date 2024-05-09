@@ -1,9 +1,9 @@
 import {SafeAreaView} from "react-native";
 import {Calendar} from "react-native-calendars";
 import {useState} from "react";
-import {useMarkedDates} from "@/utils/useMarkedDates";
+import {useMarkedDates} from "@/hooks/useMarkedDates";
 import {COLORS} from "@/utils/colors";
-import {useContactsQuery} from "@/utils/useContactsQuery";
+import {useContactsQuery} from "@/hooks/useContactsQuery";
 
 export default function CalendarTab() {
     const [selected, setSelected] = useState('');

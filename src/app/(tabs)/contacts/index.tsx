@@ -4,7 +4,7 @@ import ContactListItem from "@/components/ContactListItem";
 import {useRouter} from "expo-router";
 import {ActivityIndicator} from "react-native-paper";
 import {COLORS} from "@/utils/colors";
-import {useContactsQuery} from "@/utils/useContactsQuery";
+import {useContactsQuery} from "@/hooks/useContactsQuery";
 
 export default function ContactsTab() {
     const router= useRouter();
