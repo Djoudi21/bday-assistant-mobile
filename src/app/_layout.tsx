@@ -7,9 +7,13 @@ import {
     QueryClient,
     QueryClientProvider,
 } from '@tanstack/react-query'
+import {usePushNotifications} from "@/hooks/usePushNotifications";
 
 export default function RootLayout() {
     const queryClient = new QueryClient()
+    const {expoPushToken, notification} = usePushNotifications()
+    const data = JSON.stringify(notification, undefined, 2)
+    console.log('DATA', data)
   return (
       <QueryClientProvider client={queryClient}>
           <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}>
